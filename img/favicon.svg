@@ -1,0 +1,21 @@
+<svg
+  height="64"
+  width="64"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect
+    x="0"
+    width="64"
+    height="64"
+    rx="15"
+  />
+  <text
+    x="12"
+    y="52"
+    fill="white"
+    font-size="54"
+    font-family="Arial"
+  >
+  F
+  </text>
+</svg>

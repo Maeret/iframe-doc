@@ -1,0 +1,15 @@
+<svg
+  height="60"
+  width="200"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <text
+    x="20"
+    y="40"
+    fill="black"
+    font-size="32"
+    font-family="Helvetica"
+  >
+    IFRAME <tspan fill="black" stroke="black">API</tspan>
+  </text>
+</svg>
