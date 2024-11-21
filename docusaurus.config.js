@@ -5,9 +5,9 @@ const PrismDark = require('./src/utils/prismDark');
 const config = {
   title: 'IFRAME API',
   tagline: '',
-  url: process.env.PUBLIC_URL,
+  url: 'https://maeret.github.io/portfolio/',
   trailingSlash: false,
-  baseUrl: '/',
+  baseUrl: '/portfolio/',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
