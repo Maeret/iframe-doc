@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>IFRAME API Blog</title>
-        <link>https://maeret.github.io/changelog</link>
+        <link>https://maeret.github.io/iframe-doc/changelog</link>
         <description>IFRAME API Blog</description>
         <lastBuildDate>Thu, 07 Nov 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
@@ -10,13 +10,13 @@
         <language>en</language>
         <item>
             <title><![CDATA[[2.0] - 2024-11-07]]></title>
-            <link>https://maeret.github.io/changelog/2024/11/07</link>
-            <guid>https://maeret.github.io/changelog/2024/11/07</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2024/11/07</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2024/11/07</guid>
             <pubDate>Thu, 07 Nov 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2024/11/07#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2024/11/07#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/en/get-started/backend/wallet">Seam wallet</a>
+<li><a href="https://maeret.github.io/iframe-doc/en/get-started/backend/wallet">Seam wallet</a>
 <ul>
 <li>Description of wallets managed of the IFRAME Service side.</li>
 </ul>
@@ -25,13 +25,13 @@
         </item>
         <item>
             <title><![CDATA[[2.0] - 2024-10-21]]></title>
-            <link>https://maeret.github.io/changelog/2024/10/21</link>
-            <guid>https://maeret.github.io/changelog/2024/10/21</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2024/10/21</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2024/10/21</guid>
             <pubDate>Mon, 21 Oct 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2024/10/21#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2024/10/21#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/frontend/widget">Widgets</a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/frontend/widget">Widgets</a>:<!-- -->
 <ul>
 <li>The ability to pass the background color in the iframe URL.</li>
 </ul>
@@ -40,13 +40,13 @@
         </item>
         <item>
             <title><![CDATA[[2.0] - 2024-09-17]]></title>
-            <link>https://maeret.github.io/changelog/2024/09/17</link>
-            <guid>https://maeret.github.io/changelog/2024/09/17</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2024/09/17</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2024/09/17</guid>
             <pubDate>Tue, 17 Sep 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2024/09/17#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2024/09/17#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/frontend/widget">Widgets</a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/frontend/widget">Widgets</a>:<!-- -->
 <ul>
 <li>Widgets description.</li>
 </ul>
@@ -55,13 +55,13 @@
         </item>
         <item>
             <title><![CDATA[[2.0] - 2024-06-06]]></title>
-            <link>https://maeret.github.io/changelog/2024/06/06</link>
-            <guid>https://maeret.github.io/changelog/2024/06/06</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2024/06/06</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2024/06/06</guid>
             <pubDate>Thu, 06 Jun 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2024/06/06#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2024/06/06#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/en/frontend/event">Events</a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/en/frontend/event">Events</a>:<!-- -->
 <ul>
 <li>Description of iframe events.</li>
 </ul>
@@ -70,13 +70,13 @@
         </item>
         <item>
             <title><![CDATA[[2.0] - 2024-04-24]]></title>
-            <link>https://maeret.github.io/changelog/2024/04/24</link>
-            <guid>https://maeret.github.io/changelog/2024/04/24</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2024/04/24</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2024/04/24</guid>
             <pubDate>Wed, 24 Apr 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2024/04/24#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2024/04/24#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/en/frontend/event">Events</a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/en/frontend/event">Events</a>:<!-- -->
 <ul>
 <li>Events descriptions:<!-- -->
 <ul>
@@ -91,38 +91,38 @@
         </item>
         <item>
             <title><![CDATA[[2.0] - 2024-02-27]]></title>
-            <link>https://maeret.github.io/changelog/2024/02/27</link>
-            <guid>https://maeret.github.io/changelog/2024/02/27</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2024/02/27</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2024/02/27</guid>
             <pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2024/02/27#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2024/02/27#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/frontend/API">API Frontend</a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/frontend/API">API Frontend</a>:<!-- -->
 <ul>
-<li>Parameter <a href="https://maeret.github.io/frontend/API#platform_type"><code>platform_type</code></a> detailed.</li>
+<li>Parameter <a href="https://maeret.github.io/iframe-doc/frontend/API#platform_type"><code>platform_type</code></a> detailed.</li>
 </ul>
 </li>
 </ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[[2.0] - 2023-12-26]]></title>
-            <link>https://maeret.github.io/changelog/2023/12/26</link>
-            <guid>https://maeret.github.io/changelog/2023/12/26</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2023/12/26</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2023/12/26</guid>
             <pubDate>Tue, 26 Dec 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2023/12/26#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2023/12/26#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/frontend/API">API Frontend</a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/frontend/API">API Frontend</a>:<!-- -->
 <ul>
-<li>Query parameter <a href="https://maeret.github.io/en/frontend/API#logout"><code>logout</code></a>.</li>
+<li>Query parameter <a href="https://maeret.github.io/iframe-doc/en/frontend/API#logout"><code>logout</code></a>.</li>
 </ul>
 </li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="changed">Changed<a href="https://maeret.github.io/changelog/2023/12/26#changed" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="changed">Changed<a href="https://maeret.github.io/iframe-doc/changelog/2023/12/26#changed" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/frontend/API">API Frontend</a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/frontend/API">API Frontend</a>:<!-- -->
 <ul>
-<li>Updated logic for <a href="https://maeret.github.io/en/frontend/API#lng"><code>lng</code></a>. The path parameter
+<li>Updated logic for <a href="https://maeret.github.io/iframe-doc/en/frontend/API#lng"><code>lng</code></a>. The path parameter
 <code>lng</code> no longer affects the interface language.</li>
 </ul>
 </li>
@@ -130,43 +130,26 @@
         </item>
         <item>
             <title><![CDATA[[2.0] - 2023-10-27]]></title>
-            <link>https://maeret.github.io/changelog/2023/10/27</link>
-            <guid>https://maeret.github.io/changelog/2023/10/27</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2023/10/27</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2023/10/27</guid>
             <pubDate>Fri, 27 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2023/10/27#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2023/10/27#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li>New version of <a href="https://maeret.github.io/frontend/API">iframe</a> with a new website design, a set of
+<li>New version of <a href="https://maeret.github.io/iframe-doc/frontend/API">iframe</a> with a new website design, a set of
 required parameters in the URL, and a request signing mechanism.
-The <a href="https://maeret.github.io/changelog/2023/10/1.0/frontend/API">old version</a> will gradually be phased out.</li>
-</ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="changed">Changed<a href="https://maeret.github.io/changelog/2023/10/27#changed" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h2>
-<ul>
-<li><a href="https://maeret.github.io/betHistory">payment History API</a>:<!-- -->
-<ul>
-<li>URL for sending requests has been changed.</li>
-</ul>
-</li>
+The <a href="https://maeret.github.io/iframe-doc/changelog/2023/10/1.0/frontend/API">old version</a> will gradually be phased out.</li>
 </ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[[1.0] - 2023-05-17]]></title>
-            <link>https://maeret.github.io/changelog/2023/05/17</link>
-            <guid>https://maeret.github.io/changelog/2023/05/17</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2023/05/17</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2023/05/17</guid>
             <pubDate>Wed, 17 May 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2023/05/17#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <description><![CDATA[Changed]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="changed">Changed<a href="https://maeret.github.io/iframe-doc/changelog/2023/05/17#changed" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h2>
 <ul>
-<li><a href="https://maeret.github.io/betHistory">payment History</a>:<!-- -->
-<ul>
-<li>Method
-<a href="https://maeret.github.io/betHistory#operation/GetBetInfoHistoryByBetIds"><code>/user/history/by-payment-ids</code></a></li>
-</ul>
-</li>
-</ul>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="changed">Changed<a href="https://maeret.github.io/changelog/2023/05/17#changed" class="hash-link" aria-label="Direct link to Changed" title="Direct link to Changed">​</a></h2>
-<ul>
-<li><a href="https://maeret.github.io/betHistory#operation/GetBetInfoHistoryByDates"><code>/user/history/by-dates</code></a>:<!-- -->
+<li><a href="https://maeret.github.io/iframe-doc/betHistory#operation/GetBetInfoHistoryByDates"><code>/user/history/by-dates</code></a>:<!-- -->
 <ul>
 <li><code>/user/history</code> &gt; <code>/user/history/by-dates</code></li>
 <li><code>Request.Body.getHistoryParameters</code> &gt; <code>Request.Body.getHistoryByDatesParameters</code></li>
@@ -176,30 +159,18 @@ The <a href="https://maeret.github.io/changelog/2023/10/1.0/frontend/API">old ve
         </item>
         <item>
             <title><![CDATA[[1.0] - 2023-05-11]]></title>
-            <link>https://maeret.github.io/changelog/2023/05/11</link>
-            <guid>https://maeret.github.io/changelog/2023/05/11</guid>
+            <link>https://maeret.github.io/iframe-doc/changelog/2023/05/11</link>
+            <guid>https://maeret.github.io/iframe-doc/changelog/2023/05/11</guid>
             <pubDate>Thu, 11 May 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Added]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/changelog/2023/05/11#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="added">Added<a href="https://maeret.github.io/iframe-doc/changelog/2023/05/11#added" class="hash-link" aria-label="Direct link to Added" title="Direct link to Added">​</a></h2>
 <ul>
-<li>
-<p>API section <a href="https://maeret.github.io/betHistory">payment History</a>.
-It allows requesting user's payment history in JSON format in addition to the
-standard "payment History" section in iframe.</p>
-<blockquote>
-<p>Upon your request, we can disable the standard "payment History" menu section.</p>
-</blockquote>
-</li>
-<li>
-<p><a href="https://maeret.github.io/backend/API">IFRAME Backend</a>.
+<li><a href="https://maeret.github.io/iframe-doc/backend/API">IFRAME Backend</a>.
 Errors and implementation description for
-<a href="https://maeret.github.io/backend/limits">payment Limits</a>.</p>
-</li>
-<li>
-<p><a href="https://maeret.github.io/backend/API#operation/MakePayment">IFRAME Backend </a>.
+<a href="https://maeret.github.io/iframe-doc/backend/limits">payment Limits</a>.</li>
+<li><a href="https://maeret.github.io/iframe-doc/backend/API#operation/MakePayment">IFRAME Backend </a>.
 List of error codes <code>errorCode</code> has been extended with
-<a href="https://maeret.github.io/backend/limits">payment Limits</a> error codes.</p>
-</li>
+<a href="https://maeret.github.io/iframe-doc/backend/limits">payment Limits</a> error codes.</li>
 </ul>]]></content:encoded>
         </item>
     </channel>

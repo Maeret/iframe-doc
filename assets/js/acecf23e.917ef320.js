@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkiframe_api_docs=self.webpackChunkiframe_api_docs||[]).push([[1903],{1912:a=>{a.exports=JSON.parse('{"blogBasePath":"/iframe-doc/changelog","blogTitle":"Changelog","authorsListPath":"/iframe-doc/changelog/authors"}')}}]);

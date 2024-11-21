@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkiframe_api_docs=self.webpackChunkiframe_api_docs||[]).push([[9312],{30004:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/changelog/page/8","page":8,"postsPerPage":1,"totalPages":10,"totalCount":10,"previousPage":"/changelog/page/7","nextPage":"/changelog/page/9","blogDescription":"Blog","blogTitle":"Changelog"}}')}}]);
