@@ -3,10 +3,8 @@ title: Request signature
 sidebar_position: 3
 ---
 
-
 Before sending a response to a request, your service must check the validity of
 the signature `sign` and the creation time `time`.
-
 
 ### `time`
 
@@ -15,99 +13,76 @@ If the time from the creation of the request to its verification is more than 10
 seconds, the request is considered invalid. The response with `errorCode: 4` 
 must be returned.
 
-
 ### `sign`
 
-```js title="signature in pseudocode"
-data = {request.body}.toJson().toString() + "SECRET";
-sign = toBase64String(md5(GetBytes(data)));
+```python
+import base64
+import hashlib
+import json
+
+# Example request data
+data = {
+    "type": "payment",
+    "token2": "abc",
+    "time": 485172195,
+    "Info": '[{"EventName":"Transaction A","DateStart":1538609400,"Category":"Category Name"}]',
+    "amount": "10",
+}
+
+# Secret key
+SECRET = "SECRET"
+
+# Convert data to JSON and concatenate with SECRET
+serialized_data = json.dumps(data, separators=(",", ":"))
+data_to_sign = serialized_data + SECRET
+
+# Calculate MD5 hash and encode in Base64
+md5_hash = hashlib.md5(data_to_sign.encode('utf-8')).digest()
+sign = base64.b64encode(md5_hash).decode('utf-8')
+
+print("Signature:", sign)
 ```
 
-Calculated as the MD5 sum of a string that contains JSON-serialized request
-fields (except for the `sign` field) concatenated with the SECRET key. MD5 is
-presented in BASE64 format to save traffic.
-
-:::note
-`SECRET` is provided to you when you connect to the IFRAME API.
-:::
-
+This example demonstrates how to calculate the `sign` field. The signature must be validated by the recipient's server to confirm the integrity and authenticity of the request.
 
 ## Checking the time and signature of the request
 
-On the side of your service, the following mechanism must be implemented.
+On the side of your service, the following mechanism must be implemented:
 
-```js
-{
-	"type": "payment",
-	"token2": "abc",
-	"betId": 485172195,
-  "betInfo": "[{\"Coef\":2.31,\"CouponType\":\"Single\",\"DateStart\":1538609400,\"Event\":\"W1\",\"GameName\":\"NHL.   Washington Capitals - Boston Bruins   \",\"Score\":\"0-0\",\"SportName\":\"Ice Hockey\"}]",
-	"summ": "10",
-	"totalCoef": "2.31"
+```python
+import base64
+import hashlib
+import json
+
+# Example request data (received from client)
+received_data = {
+    "type": "payment",
+    "token2": "abc",
+    "time": 485172195,
+    "Info": '[{"EventName":"Transaction A","DateStart":1538609400,"Category":"Category Name"}]',
+    "amount": "10",
+    "sign": "EXPECTED_SIGNATURE",  # Replace with the signature received in the request
 }
+
+# Secret key
+SECRET = "SECRET"
+
+# Extract and remove the signature from the request
+received_sign = received_data.pop("sign")
+
+# Serialize data and append SECRET
+serialized_data = json.dumps(received_data, separators=(",", ":"))
+data_to_sign = serialized_data + SECRET
+
+# Recalculate the signature
+md5_hash = hashlib.md5(data_to_sign.encode('utf-8')).digest()
+calculated_sign = base64.b64encode(md5_hash).decode('utf-8')
+
+# Validate the signature
+if calculated_sign == received_sign:
+    print("Signature is valid.")
+else:
+    print("Signature is invalid.")
 ```
 
-*On the example of the request signature
-[**MakePayment**](/backend/API#operation/MakePayment):*
-1.  The time since the request was created `time` is checked. If more than 10
-    seconds elapsed from the creation of the request to its validation, it must
-    be considered invalid and the response must be returned with `errorCode: 4`.
-
-    ```
-    time: 1451034874
-    ```
-
-1.  The request body is serialized to JSON. Respect the order of the fields:
-
-    1.  int `time`
-    1.  string `type`
-    1.  string `token2`
-    1.  ulong `betId`
-    1.  string `betInfo`
-    1.  string `summ`
-    1.  string `totalCoef`
-
-    :::note
-    *   The `sign` field is not serialized.
-    *   If a field is not received in the request, do not include it in the JSON
-        structure, but follow the specified field order.
-    :::
-
-    ```js
-    data = {
-      "time": 1451034874,
-      "type": "payment",
-      "token2": "abc",
-      "betId": 485172195,
-      "betInfo": "[{\"Coef\":2.31,\"CouponType\":\"Single\",\"DateStart\":1538609400,\"Event\":\"W1\",\"GameName\":\"NHL.   Washington Capitals - Boston Bruins   \",\"Score\":\"0-0\",\"SportName\":\"Ice Hockey\"}]",
-      "summ": "10",
-      "totalCoef": "2.31"
-    }
-    ```
-
-1.  The secret key `SECRET` is added to the resulting string:
-
-    ```js
-    data = '{"time":1451034874,"type":"payment","token2":"abc","betId":485172195,"betInfo":"[{\"Coef\":2.31,\"CouponType\":\"Single\",\"DateStart\":1538609400,\"Event\":\"W1\",\"GameName\":\"NHL.   Washington Capitals - Boston Bruins   \",\"Score\":\"0-0\",\"SportName\":\"Ice Hockey\"}]","summ":"10","totalCoef":"2.31"}"' + 'SECRET';
-    ```
-
-1.  A string is represented as an array of bytes:
-    
-    ```js
-    databyte = GetBytes(data);
-    ```
-
-1.  The MD5 sum of the array is calculated:
-
-    ```js
-    databytemd5 = md5Hash.ComputeHash(databyte);  // hex form: 1d316b9d26a9a2f9989e48072a214f53
-    ```
-
-1.  The sum is presented in Base64 format:
- 
-    ```js
-    sign = Convert.ToBase64String(databytemd5);   // "HTFrnSapovmYnkgHKiFPUw=="
-    ```
-
-If the calculated MD5 sum is identical to the request signature, then the
-request validity check is passed.
+The process ensures the integrity and authenticity of the request by verifying the `sign` field. If the signature matches, the request is valid. Otherwise, it should be rejected.

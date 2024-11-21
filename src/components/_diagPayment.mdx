@@ -2,8 +2,8 @@
 stateDiagram-v2
   state Calculation {
     [*] --> refund
-    [*] --> win
-    [*] --> loss
+    [*] --> credit
+    [*] --> debt
   }
 
 
@@ -17,13 +17,13 @@ stateDiagram-v2
 
   deleted --> [*]
 
-  refund --> win: recalculation
+  refund --> credit: recalculation
   refund --> [*]
 
-  loss --> win: recalculation
-  loss --> [*]
+  debt --> credit: recalculation
+  debt --> [*]
 
-  win --> refund: recalculation
-  win --> loss: recalculation
-  win --> [*]
+  credit --> refund: recalculation
+  credit --> debt: recalculation
+  credit --> [*]
 ```

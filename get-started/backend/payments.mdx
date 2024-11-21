@@ -25,8 +25,8 @@ occurs.
 
 ## Calculation
 
-*   `type = win`
-*   `type = loss`
+*   `type = credit`
+*   `type = debt`
 *   `type = refund`
 
 At the time of the calculation of the payment (when the outcome of the event is
@@ -36,15 +36,15 @@ payment.
 
 ## Recalculation
 
-*   `type = win`
-*   `type = loss`
+*   `type = credit`
+*   `type = debt`
 *   `type = refund`
 
 Calling the `/MakePayment` method again with the specified `type`. Occurs when
 the result of a match is annulled.
 
 :::important
-In this case, the previous transaction (`win`, `loss`,
+In this case, the previous transaction (`credit`, `debt`,
 `refund`) should be canceled by your service.
 :::
 
@@ -53,7 +53,7 @@ In this case, the previous transaction (`win`, `loss`,
 
 *   `type = sale`
 
-The user initiated the sale of a payment.
+The user initiated the sale.
 
 
 ## payment deleted
