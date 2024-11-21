@@ -5,9 +5,11 @@ const PrismDark = require('./src/utils/prismDark');
 const config = {
   title: 'IFRAME API',
   tagline: '',
-  url: 'https://maeret.github.io/portfolio/',
+  url: 'https://maeret.github.io/',
   trailingSlash: false,
-  baseUrl: '/portfolio/',
+  baseUrl: '/',
+  organizationName: 'Maeret',
+  projectName: 'iframe-doc',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.svg',
