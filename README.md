@@ -17,4 +17,4 @@ This repository hosts the portfolio documentation site. Built with [Docusaurus](
 
 ## Deployment
 
-Live site available at: [https://maeret.github.io/](https://maeret.github.io/)
+Live site available at: [https://maeret.github.io/](https://maeret.github.io/iframe-doc)
