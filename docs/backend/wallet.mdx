@@ -1,0 +1,134 @@
+---
+title: Seam Wallet API
+sidebar_position: 2
+hide_table_of_contents: true
+---
+
+
+import ApiDocMdx from '@theme/ApiDocMdx';
+
+
+This API allows you to get and alter the balance of users' wallets managed on
+the IFRAME Service side.
+
+For these purposes, your service must send requests to the IFRAME Service along
+with a token unique for the user and a wallet.
+
+<details>
+  <summary>
+    <b>Getting the balance</b>. Integration flow
+  </summary>
+  You need to:
+  1.  (optionally) Generate unique `token1` and `sign` (see
+      [Request signature](/en/get-started/backend/sign)).
+  1.  Call [/GetBalance](/en/get-started/wallet/#operation/getBalance) method.
+  1.  IFRAME Service will send a [/GetUserData](/en/get-started/wallet/#operation/getUserData)
+      request to your host address.
+
+      Your service should validate the token and signature and return data,
+      including the existing user's `userId`.
+
+  1.  IFRAME Service will send a response that contains the balance of the
+      wallet tied to the user.
+
+  ```mermaid
+  sequenceDiagram
+    participant P as Your service
+    participant I as IFRAME Service
+
+
+    P->>I: /GetBalance (token1, sign)
+    activate I
+
+    alt
+      I-->>P: /GetUserData
+    else Invalid token1 or sign
+      I-->>P: 401
+    end
+
+    alt
+      P->>I: 200 (userId, errorCode = 0)
+    else
+      P->>I: 200 (errorCode = 1)
+    else
+      P->>I: 200 (errorCode = 4)
+    end
+
+    alt
+      I-->>P: 200 (balance)
+    else
+      I-->>P: 500
+      deactivate I
+    end
+  ```
+</details>
+
+<details>
+  <summary>
+    <b>Getting the balance</b>. Integration flow
+  </summary>
+  You need to:
+  1.  (optionally) Generate unique `token1` and `sign` (see
+      [Request signature](/en/get-started/backend/sign)).
+  1.  Call [/TransferFunds](/en/get-started/wallet/#operation/transferFunds) method with operation
+      parameters including `transferId`.
+
+      :::info
+      Requests with the same `transferId` and other parameters are idempotent,
+      meaning that if the first request was successful, the service will return
+      a response with a status of 409 for all subsequent requests.
+
+      If in repeat requests the `transferId` matches, but other parameters
+      differ, they will be rejected with 400 status code. One `transferId`
+      cannot be used for different `userId`.
+      :::
+
+  1.  IFRAME Service will send a [/GetUserData](/en/get-started/wallet/#operation/getUserData)
+      request to your host address.
+
+      Your service should validate the token and signature and return data,
+      including the existing user's `userId`.
+
+  1.  In the case of success, IFRAME Service will respond with 200 status code.
+
+  ```mermaid
+  sequenceDiagram
+    participant P as Your service
+    participant I as IFRAME Service
+
+
+    P->>I: /TransferFunds (token1, sign, transferId)
+    activate I
+
+    alt
+      I-->>P: /GetUserData
+    else Invalid token1 or sign
+      I-->>P: 401
+    end
+
+    alt
+      P->>I: 200 (userId, errorCode = 0)
+    else Invalid token1
+      P->>I: 200 (errorCode = 1)
+    else Invalid sign
+      P->>I: 200 (errorCode = 4)
+    end
+
+    alt
+      I-->>P: 200 (balance)
+    else Invalid response to /GetUserData or violated idempotence
+      I-->>P: 400
+    else userId not found
+      I-->>P: 403
+    else Operation under this transferId is already complete
+      I-->>P: 409
+    else Insufficient funds
+      I-->>P: 422
+    else
+      I-->>P: 500
+      deactivate I
+    end
+  ```
+</details>
+
+<ApiDocMdx id="en-wallet"/>
