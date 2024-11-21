@@ -213,7 +213,7 @@ webhooks:
                       > See [payment Limits](/en/get-started/backend/limits)
                       * `7` - daily limit on the total amount of payment;
                       > See [payment Limits](/en/get-started/backend/limits)
-                      * `8` - loss limit;
+                      * `8` - debt limit;
                       > See [payment Limits](/en/get-started/backend/limits) 
                       * `9` - self-imposed limit;
                       > See [payment Limits](/en/get-started/backend/limits)
@@ -241,8 +241,8 @@ webhooks:
                     > [More about transactions](/backend/payments) 
                   enum:
                     - payment
-                    - win
-                    - loss
+                    - credit
+                    - debt
                     - refund
                     - sale
                     - deleted

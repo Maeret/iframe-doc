@@ -149,7 +149,7 @@ webhooks:
                     type: "integer"
                     
                     
-                    description: "Error code: \n * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.\n* `1` - invalid `token1` or `token2` received;\n* `2` - `betId` has already been processed;\n* `3` - insufficient account balance;\n* `4` - invalid signature `sign`;\n * `6` - limit on the amount of a single payment;\n> See [payment Limits](/en/get-started/backend/limits)\n* `7` - daily limit on the total amount of payment;\n> See [payment Limits](/en/get-started/backend/limits)\n* `8` - loss limit;\n> See [payment Limits](/en/get-started/backend/limits) \n* `9` - self-imposed limit;\n> See [payment Limits](/en/get-started/backend/limits)\n* `10` - user profile is not verified.\n> See [payment Limits](/en/get-started/backend/limits)"
+                    description: "Error code: \n * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.\n* `1` - invalid `token1` or `token2` received;\n* `2` - `betId` has already been processed;\n* `3` - insufficient account balance;\n* `4` - invalid signature `sign`;\n * `6` - limit on the amount of a single payment;\n> See [payment Limits](/en/get-started/backend/limits)\n* `7` - daily limit on the total amount of payment;\n> See [payment Limits](/en/get-started/backend/limits)\n* `8` - debt limit;\n> See [payment Limits](/en/get-started/backend/limits) \n* `9` - self-imposed limit;\n> See [payment Limits](/en/get-started/backend/limits)\n* `10` - user profile is not verified.\n> See [payment Limits](/en/get-started/backend/limits)"
                     enum:
                       - 0
                       - 1
@@ -171,8 +171,8 @@ webhooks:
                   description: "Transaction type.\n> [More about transactions](/backend/payments) \n"
                   enum:
                     - "payment"
-                    - "win"
-                    - "loss"
+                    - "credit"
+                    - "debt"
                     - "refund"
                     - "sale"
                     - "deleted"
