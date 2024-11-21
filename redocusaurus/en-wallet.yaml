@@ -1,0 +1,476 @@
+openapi: 3.1.0
+info:
+  title: ''
+  description: ''
+  version: ''
+paths:
+  /api/external/IFramePartner/v1/GetBalance:
+    post:
+      operationId: getBalance
+      summary: /GetBalance
+      description: |
+        Getting user's wallet balance on the IFRAME Service side.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetBalanceRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetBalanceRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetBalanceRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetBalanceResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetBalanceResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetBalanceResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/*+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/*+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/*+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  /api/external/IFramePartner/v1/TransferFunds:
+    post:
+      operationId: transferFunds
+      summary: /TransferFunds
+      description: |
+        Topping up user's wallet on the IFRAME Service side or withdrawal of
+        funds.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferFundsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TransferFundsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TransferFundsRequest'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '403':
+          description: Forbidden
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '422':
+          description: Unprocessable Entity
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+webhooks:
+  /GetUserData:
+    post:
+      operationId: getUserData
+      summary: /GetUserData
+      description: |
+        Getting user data by IFRAME Service via a POST request.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token1:
+                  type: string
+                  description: >
+                    User token received in iframe URL
+
+                    > [More about authorization in
+                    iframe](/en/get-started/frontend/auth)
+                sign:
+                  type: string
+                  description: >
+                    Request signature performed by the IFRAME Service
+
+                    > [Read more about request
+                    signing](/en/get-started/backend/sign)
+                  example: IznVfVDbrKDoGJZus8qplQ==
+                time:
+                  type: integer
+                  description: >
+                    The time at which the request was created on the IFRAME
+                    Service side
+                  example: 1451034874
+            example:
+              token1: string
+              sign: IznVfVDbrKDoGJZus8qplQ==
+              time: 1451034874
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: integer
+                    description: |
+                      User ID on your system
+                  currency:
+                    type: string
+                    description: User currency code in ISO 4217
+                    example: EUR
+                  token2:
+                    type: string
+                    description: |
+                      User token that will be sent by the IFRAME Service in
+                      payment and balance webhooks.
+                  country:
+                    type: string
+                    description: Registration country code in ISO 3166-1 alpha-2
+                    example: ES
+                  city:
+                    type: string
+                    description: User city
+                    example: Madrid
+                  ip:
+                    type: string
+                    description: User IP
+                    example: 213.192.202.121
+                  dopInfo:
+                    type: string
+                    deprecated: true
+                  success:
+                    type: boolean
+                    description: The result of processing the request by your service
+                  description:
+                    type: string
+                    description: >
+                      Description of the request processing result
+
+                      > The field is logged on the IFRAME Service side. You can
+                      enter the error information you need here for debugging.
+                    nullable: true
+                  errorCode:
+                    type: integer
+                    enum:
+                      - 0
+                      - 1
+                      - 4
+                    description: |
+                      Error code: 
+                       * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.
+                      * `1` - invalid `token1` received;
+                      * `4` - invalid signature `sign`.
+                  minbet:
+                    type: number
+                    format: decimal
+                    description: >
+                      Minimum bid per user
+
+                      > The ability to limit the minimum and maximum bid can be
+                      enabled upon request. Please contact us.
+                    example: 0.2
+                  maxbet:
+                    type: number
+                    format: decimal
+                    description: >
+                      Maximum bid per user
+
+                      > The ability to limit the minimum and maximum bid can be
+                      enabled upon request. Please contact us.
+                    example: 1000
+                  minMaxCurrency:
+                    type: string
+                    description: >
+                      Currency `minbet` and `maxbet` in ISO 4217
+
+                      > The ability to limit the minimum and maximum payment can
+                      be enabled upon request. Please contact us.
+                    example: USD
+                    nullable: true
+                  tel:
+                    type: string
+                    description: >
+                      User's phone number **without country code**. The IFRAME
+                      Service determines the country code from `country`.
+                    example: '965065787'
+                    nullable: true
+                  email:
+                    type: string
+                    description: |
+                      User's mail
+                    example: example@nomail.com
+                    nullable: true
+                  firstName:
+                    type: string
+                    description: First name
+                    example: Robert
+                    nullable: true
+                  lastName:
+                    type: string
+                    description: Last name
+                    example: Dawson
+                    nullable: true
+                required:
+                  - userId
+                  - currency
+                  - token2
+                  - country
+              example:
+                userId: 12345
+                currency: EUR
+                token2: string
+                country: ES
+                city: Madrid
+                ip: 213.192.202.121
+                dopInfo: string
+                success: true
+                description: string
+                minbet: 0.2
+                maxbet: 1000
+                minMaxCurrency: USD
+                tel: '965065787'
+                email: example@nomail.com
+                firstName: Robert
+                lastName: Dawson
+                errorCode: 0
+components:
+  schemas:
+    GetBalanceRequest:
+      type: object
+      properties:
+        time:
+          type: integer
+          format: int32
+          description: |
+            UNIX timestamp of the request creation on your service side.
+        sign:
+          type: string
+          nullable: true
+          description: |
+            Request signature produced by your service.
+
+            See [Request signature](/en/get-started/backend/sign).
+        token1:
+          type: string
+          nullable: true
+          description: |
+            Unique user's token generated on your service side.
+      additionalProperties: false
+      example:
+        time: 1451034874
+        sign: 234ggt45g235gf5t45
+        token1: wer5t345234fdfgh45
+    GetBalanceResponse:
+      type: object
+      properties:
+        balance:
+          type: number
+          format: double
+          description: |
+            Balance of user's wallet on the IFRAME service side.
+
+            `0` if the user not found.
+      additionalProperties: false
+      example:
+        balance: 0
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+          description: |
+            Link to the page with status description.
+        title:
+          type: string
+          nullable: true
+          description: |
+            Status phrase.
+        status:
+          type: integer
+          format: int32
+          nullable: true
+          description: |
+            HTTP status code.
+        detail:
+          type: string
+          nullable: true
+          description: |
+            Error description.
+        instance:
+          type: string
+          nullable: true
+          description: |
+            Instance ID.
+      additionalProperties: {}
+    TransferFundsRequest:
+      type: object
+      properties:
+        time:
+          type: integer
+          format: int32
+          description: |
+            UNIX timestamp of the request creation on your service side.
+        sign:
+          type: string
+          nullable: true
+          description: |
+            Request signature produced by your service.
+
+            See [Request signature](/en/get-started/backend/sign).
+        token1:
+          type: string
+          nullable: true
+          description: |
+            Unique user's token generated on your service side.
+        type:
+          type: string
+          enum:
+            - deposit
+            - withdraw
+          nullable: true
+          description: |
+            Transaction type.
+        amount:
+          type: number
+          format: double
+          description: |
+            Transaction sum.
+        transferId:
+          type: string
+          format: uuid
+          maximumLength: 36
+          description: |
+            Transaction GUID unique for a successful operation.
+          nullable: true
+      additionalProperties: false
+      example:
+        time: 1451034874
+        sign: IznVfVDbrKDoGJZus8qplQ==
+        token1: wer5t345234fdfgh45
+        type: deposit
+        amount: 1.1
+        transferId: a829e0bd-e8ca-4808-adb6-9df97741b2e7
+  examples:
+    GetUserDataRequest:
+      token1: string
+      sign: IznVfVDbrKDoGJZus8qplQ==
+      time: 1451034874
+    GetUserDataResponse:
+      userId: 12345
+      currency: EUR
+      token2: string
+      country: ES
+      city: Madrid
+      ip: 213.192.202.121
+      dopInfo: string
+      success: true
+      description: string
+      minbet: 0.2
+      maxbet: 1000
+      minMaxCurrency: USD
+      tel: '965065787'
+      email: example@nomail.com
+      firstName: Robert
+      lastName: Dawson
+      errorCode: 0
+    GetBalanceRequest:
+      time: 1451034874
+      sign: 234ggt45g235gf5t45
+      token1: wer5t345234fdfgh45
+    GetBalanceResponse:
+      balance: 0
+    TransferFundsRequest:
+      time: 1451034874
+      sign: IznVfVDbrKDoGJZus8qplQ==
+      token1: wer5t345234fdfgh45
+      type: deposit
+      amount: 1.1
+      transferId: a829e0bd-e8ca-4808-adb6-9df97741b2e7

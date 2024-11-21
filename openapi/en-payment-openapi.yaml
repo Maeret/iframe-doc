@@ -1,0 +1,311 @@
+openapi: "3.1.0"
+info:
+  title: "IFRAME backend api"
+  version: "1.0"
+servers:
+  - url: "http://partner-domain.com"
+    description: ""
+webhooks:
+  /GetUserData:
+    post:
+      summary: "/GetUserData"
+      tags: []
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  userId:
+                    type: "integer"
+                    description: "User ID on your system\n"
+                  currency:
+                    type: "string"
+                    description: "User currency code in ISO 4217"
+                    example: "EUR"
+                  token2:
+                    type: "string"
+                    description: "User token that will then be returned by the IFRAME Service in the /MakePayment and /GetBalance methods"
+                  country:
+                    type: "string"
+                    description: "Registration country code in ISO 3166-1 alpha-2"
+                    example: "ES"
+                  city:
+                    type: "string"
+                    description: "User city"
+                    example: "Madrid"
+                  ip:
+                    type: "string"
+                    description: "User IP"
+                    example: "213.192.202.121"
+                  dopInfo:
+                    type: "string"
+                    deprecated: true
+                  success:
+                    type: "boolean"
+                    description: "The result of processing the request by your service"
+                  description:
+                    type: "string"
+                    description: "Description of the request processing result\n> The field is logged on the IFRAME Service side. You can enter the error information you need here for debugging.\n"
+                    nullable: true
+                  errorCode:
+                    type: "integer"
+                    enum:
+                      - 0
+                      - 1
+                      - 4
+                    description: "Error code: \n * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.\n* `1` - invalid 'token1' received;\n* `4` - invalid signature `sign`.\n"
+                   
+                  minbet:
+                    type: "number"
+                    format: "decimal"
+                    description: "Minimum bid per user\n> The ability to limit the minimum and maximum bid can be enabled upon request. Please contact us.\n"
+                    example: 0.2
+                    
+                  maxbet:
+                    type: "number"
+                    format: "decimal"
+                    description: "Maximum bid per user\n> The ability to limit the minimum and maximum bid can be enabled upon request. Please contact us.\n"
+                    example: 1000
+                    
+                  minMaxCurrency:
+                    type: "string"
+                    description: "Currency `minbet` and `maxbet` in ISO 4217\n> The ability to limit the minimum and maximum payment can be enabled upon request. Please contact us.\n"
+                    example: "USD"
+                    nullable: true
+                  tel:
+                    type: "string"
+                    description: "User's phone number **without country code**. The IFRAME Service determines the country code from `country`.\n"
+                    example: "965065787"
+                    nullable: true
+                  email:
+                    type: "string"
+                    description: "User's mail\n"
+                    example: "example@nomail.com"
+                    nullable: true
+                  firstName:
+                    type: "string"
+                    description: "First name"
+                    example: "Robert"
+                    nullable: true
+                  lastName:
+                    type: "string"
+                    description: "Last name"
+                    example: "Dawson"
+                    nullable: true
+                required:
+                  - "userId"
+                  - "currency"
+                  - "token2"
+                  - "country"
+              example:
+                 $ref: "#/components/examples/GetUserDataResponse"
+      operationId: "GetUserData"
+      description: "Getting user data by IFRAME Service"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                token1:
+                  type: "string"
+                  description: "User token received in iframe URL\n> [More about authorization in iframe](/en/get-started/frontend/auth)\n"
+                sign:
+                  type: "string"
+                  description: "Request signature performed by the IFRAME Service\n> [Read more about request signing](/en/get-started/backend/sign)\n"
+                  example: "IznVfVDbrKDoGJZus8qplQ=="
+                time:
+                  type: integer
+                  description: "The time at which the request was created on the IFRAME Service side\n"
+                  example: 1451034874
+            example:
+              $ref: "#/components/examples/GetUserDataRequest"
+  /MakePayment:
+    post:
+      summary: "/MakePayment"
+      tags: []
+      description: "Transactions"
+      operationId: "MakePayment"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  success:
+                    type: "boolean"
+                    description: "The result of processing the request by your service"
+                    example: false
+                  description:
+                    type: "string"
+                    description: "Description of the request processing result\n> The field is logged on the IFRAME Service side. You can enter the error information you need here for debugging.\n"
+                    nullable: true
+                  errorCode:
+                    type: "integer"
+                    
+                    
+                    description: "Error code: \n * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.\n* `1` - invalid `token1` or `token2` received;\n* `2` - `betId` has already been processed;\n* `3` - insufficient account balance;\n* `4` - invalid signature `sign`;\n * `6` - limit on the amount of a single payment;\n> See [payment Limits](/en/get-started/backend/limits)\n* `7` - daily limit on the total amount of payment;\n> See [payment Limits](/en/get-started/backend/limits)\n* `8` - loss limit;\n> See [payment Limits](/en/get-started/backend/limits) \n* `9` - self-imposed limit;\n> See [payment Limits](/en/get-started/backend/limits)\n* `10` - user profile is not verified.\n> See [payment Limits](/en/get-started/backend/limits)"
+                    enum:
+                      - 0
+                      - 1
+                      - 2
+                      - 3
+                      - 4
+                required:
+                  - "success"
+              example:
+                    $ref: "#/components/examples/MakePaymentResponse"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                type:
+                  type: "string"
+                  description: "Transaction type.\n> [More about transactions](/backend/payments) \n"
+                  enum:
+                    - "payment"
+                    - "win"
+                    - "loss"
+                    - "refund"
+                    - "sale"
+                    - "deleted"
+                betId:
+                  type: "number"
+                  format: "ulong"
+                  description: "payment ID in wallet provider system"
+                  example: 26572710223
+                token2:
+                  type: "string"
+                  description: "Token received by the IFRAME Service in response to the request [/GetUserData](/en/get-started/backend/API#operation/GetUserData)"
+                  example: "E7587B42-9E13-4FA8-BD0A-38247829A564"
+                betInfo:
+                  type: "string"
+                  nullable: true
+                  description: "payment info. The default language is English.\n> The language of `betInfo` can be changed upon request. Please contact us.\n"
+                  example: "[{\"Coef\":2.3,\"CouponType\":\"Single\",\"DateStart\":1538609400,\"Event\":\"W1\",\"GameName\":\"NHL.   Washington Capitals - Boston Bruins   \",\"Score\":\"0-0\",\"SportName\":\"Ice Hockey\"}]"
+                summ:
+                  type: "string"
+                  example: 10
+                  description: "transaction(s) amount"
+                totalCoef:
+                  type: "string"
+                  description: "Overall transaction details"
+                  example: "2.3"
+                time:
+                  type: "integer"
+                  example: 1451034874
+                  description: "The time at which the request was created on the IFRAME Service side\n"
+                sign:
+                  type: "string"
+                  description: "Request signature performed by the IFRAME Service\n> [Read more about request signing](/en/get-started/backend/sign)\n"
+                  example: "IznVfVDbrKDoGJZus8qplQ=="
+            
+  /GetBalance:
+    post:
+      summary: "/GetBalance"
+      tags: []
+      description: "Getting the user's current balance by the IFRAME Service"
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  balance:
+                    type: "integer"
+                    format: "decimal"
+                    description: "Current user balance"
+                    example: 223.5
+                  success:
+                    type: "boolean"
+                    description: "The result of processing the request by your service"
+                  description:
+                    type: "string"
+                    description: "Description of the request processing result\n> The field is logged on the IFRAME Service side. You can enter the error information you need here for debugging.\n"
+                    nullable: true
+                  errorCode:
+                    type: "integer"
+                    enum:
+                      - 0
+                      - 1
+                      - 4
+                    description: "Error code:  \n * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.\n* `1` - invalid `token1` or `token2` received;\n* `4` - invalid signature `sign`;\n"
+              example:
+                $ref: "#/components/examples/GetBalanceResponse"
+        
+      operationId: "GetBalance"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                token2:
+                  type: "string"
+                  description: "Token received by the IFRAME Service in response to the request [/GetUserData](/en/get-started/backend/API#operation/GetUserData)"
+                  example: "E7587B42-9E13-4FA8-BD0A-38247829A564"
+                sign:
+                  type: "string"
+                  description: "Request signature performed by the IFRAME Service\n> [Read more about request signing](/en/get-started/backend/sign)\n"
+                  example: "IznVfVDbrKDoGJZus8qplQ=="
+                time:
+                  type: "integer"
+                  description: "The time at which the request was created on the IFRAME Service side\n"
+                  example: 1451034874
+            example:
+                $ref: "#/components/examples/GetBalanceRequest"
+components:
+  schemas: {}
+  examples:
+    GetUserDataRequest:
+      {
+        "token1": "string",
+        "sign": "IznVfVDbrKDoGJZus8qplQ==",
+        "time": 1451034874
+      }
+    GetUserDataResponse:
+      {
+        "userId": 12345,
+        "currency": "EUR",
+        "token2": "string",
+        "country": "ES",
+        "city": "Madrid",
+        "ip": "213.192.202.121",
+        "dopInfo": "string",
+        "success": true,
+        "description": "string",
+        "minbet": 0.2,
+        "maxbet": 1000,
+        "minMaxCurrency": "USD",
+        "tel": "965065787",
+        "email": "example@nomail.com",
+        "firstName": "Robert",
+        "lastName": "Dawson",
+        "errorCode": 0
+      }
+    MakePaymentRequest:
+      
+    MakePaymentResponse:
+ 
+    GetBalanceRequest:
+      {
+        "token2": "E7587B42-9E13-4FA8-BD0A-38247829A564",
+        "sign": "IznVfVDbrKDoGJZus8qplQ==",
+        "time": 1451034874
+      }
+    GetBalanceResponse:
+      {
+       "balance": 223.5,
+       "success": true,
+       "errorCode": 0
+      }        
+
