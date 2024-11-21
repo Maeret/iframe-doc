@@ -1,0 +1,64 @@
+---
+title: Transactions
+sidebar_position: 3
+hide_table_of_contents: false
+---
+
+
+import DiagPayment from '@site/src/components/_diagPayment.mdx';
+
+
+The IFRAME Service initiates a call to the
+[**/MakePayment**](/backend/API#operation/MakePayment) method in accordance with
+the payment life cycle.
+
+<DiagPayment/>
+
+
+## payment acceptance
+
+*   `type = payment`
+
+The user initiated the placement of a payment. The first call to `/MakePayment`
+occurs.
+
+
+## Calculation
+
+*   `type = win`
+*   `type = loss`
+*   `type = refund`
+
+At the time of the calculation of the payment (when the outcome of the event is
+determined), the method is recalled again, with the corresponding `type` of the
+payment.
+
+
+## Recalculation
+
+*   `type = win`
+*   `type = loss`
+*   `type = refund`
+
+Calling the `/MakePayment` method again with the specified `type`. Occurs when
+the result of a match is annulled.
+
+:::important
+In this case, the previous transaction (`win`, `loss`,
+`refund`) should be canceled by your service.
+:::
+
+
+## Sale
+
+*   `type = sale`
+
+The user initiated the sale of a payment.
+
+
+## payment deleted
+
+*   `type = deleted`
+
+The payment can be removed on the IFRAME Service side. For example, in the event of
+a failure when calling a method with the payment acceptance.

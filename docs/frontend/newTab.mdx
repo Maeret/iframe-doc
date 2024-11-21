@@ -1,0 +1,22 @@
+---
+title: Open in new tab
+sidebar_position: 4
+hide_table_of_contents: false
+---
+
+
+If a user clicks on a link inside an iframe while holding the Ctrl or Cmd key or
+selects "Open link in new tab" from the context menu, they will be directed to
+the parent domain of the iframe with the addition of the `path` parameter
+(the link that the user clicked on in the iframe):
+
+```
+https://{domain}/b2b-frame-goto?path=https:%2F%example.com%2Fen%2Flive%2Ffootball
+```
+
+*   `domain` — the parent domain
+*   `path` — the link that the user clicked on
+
+:::info
+The address of the parent domain is taken from `document.referrer`.
+:::

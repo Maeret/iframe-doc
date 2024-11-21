@@ -1,0 +1,48 @@
+---
+title: Get started
+slug: /
+sidebar_position: 1
+---
+
+
+import ExampleTabs from '@site/src/components/_exampleTabs.mdx';
+
+
+This API will let you embed the contents of the wallet provider's website in an iframe 
+element in your web application. The iframe element is hosted as an independent
+HTML document with its own browsing context. Your users will be able to log in
+to the wallet provider's application and place payment. Their credentials will be stored
+on your side. 
+
+The API uses callbacks to your server to provide communication between the
+wallet provider service and your user database.
+
+*   The [API frontend](/category/api-frontend) section
+    describes how to include an iframe element in your application code.
+*   The [API backend](/category/api-backend) section describes requests from the
+    wallet provider's server to your app, which let the wallet provider get your user data,
+    authorize users, place and calculate their payment.
+
+:::info
+[More about the HTML iframe element](https://www.w3.org/TR/2010/WD-html5-20100624/the-iframe-element.html).
+:::
+
+<ExampleTabs lng='en'>
+  Iframe examples above display the wallet provider's demo site (web and mobile
+  version).
+
+  :::note
+  Click a link holding the Ctrl or Cmd key or select "Open link in new tab" to
+  find out it works.
+  :::
+</ExampleTabs>
+
+This iframe URL does not accept a `token` and does not cause it to be checked,
+as [explained here](/frontend/auth), so the user is not required to register or
+authorize in order to navigate between sections of the website. In addition, it
+does not require any other [mandatory parameters](/frontend/API). You can use
+this widget in your application.
+
+In addition, the iframe you'll set up in [this tutorial](/frontend/API) has the
+option to disable (separately) user token authorization, the registration
+button, and the top menu. Please contact us to do so.

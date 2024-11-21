@@ -1,0 +1,50 @@
+import CodeBlock from '@theme/CodeBlock';
+import Iframe from '@site/src/components/iframe.js'
+import componentToString from 'react-element-to-jsx-string';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+
+
+export const env = ExecutionEnvironment.canUseDOM ? window.location.host : '';
+
+export function IFrameContainer(props) {
+  if (ExecutionEnvironment.canUseDOM) {
+    if (window.location.pathname.indexOf('/en') > -1) {
+      localStorage.setItem('lng', 'en');
+    }
+  }
+
+  return ( 
+    Iframe(
+      env,
+      {...props}
+    )
+  );
+}
+
+<IFrameContainer {...props}/>
+
+<br/>
+<br/>
+
+{
+  props.desc[0]
+  ? props.desc[0]
+  : props.desc
+}
+
+<CodeBlock language="html">
+  {
+    componentToString(
+      Iframe(
+        env,
+        {...props}
+      )
+    )
+  }
+</CodeBlock>
+
+{
+  props.desc[0]
+  ? props.desc.slice(1)
+  : null
+}

@@ -1,0 +1,81 @@
+---
+title: Widgets
+sidebar_position: 5
+hide_table_of_contents: false
+---
+
+
+import ExampleTabs from '@site/src/components/_exampleTabs.mdx';
+
+
+Widget is a part of a service UI and functionality placed on a separate page.
+You can embed widgets in your app via iframe.
+
+<ExampleTabs
+  lng='en'
+  desktop_height='166'
+  mobile_height='139'
+  src='https://docs-demo.payment.com/LNG/widget/top-events/live?platform_type=PLATFORM_TYPE&bgColor=BG_COLOR'
+>
+  Iframe examples above display widgets (web and mobile
+  version).
+</ExampleTabs>
+
+Interactions with a widget may trigger MessageEvent messages arriving to the
+parent app.
+
+
+## Top events
+
+Slider containing top events available on address:
+
+```
+https://{domain}/{lng}/widget/top-events/{feed}?platform_type={platform_type}&bgColor={bgColor}
+```
+
+See [parameters details](/en/frontend/API).
+
+---
+
+
+### `widgetCoefficientClicked`
+
+Click on a transaction events:
+
+```js
+{
+  sender: 'b2b',
+  event: 'widgetCoefficientClicked',
+  // link to the event including the domain
+  url: 'https://frame.com/en/live/football/2718323-olympic-summer-games-2024/546773231-argentina-u23-morocco-u23' 
+}
+```
+
+:::note
+This transaction events will be added to the coupon.
+:::
+
+
+### `widgetEventClicked`
+
+Followed a link to a tournament:
+
+```js
+{
+  sender: 'b2b',
+  event: 'widgetEventClicked',
+  // link to the tournament including the domain
+  url: 'https://frame.com/en/live/football/2718323-olympic-summer-games-2024/'
+}
+```
+
+Click on a card:
+
+```js
+{
+  sender: 'b2b',
+  event: 'widgetEventClicked',
+  // link to the event including the domain
+  url: 'https://frame.com/en/live/football/2718323-olympic-summer-games-2024/546773231-argentina-u23-morocco-u23'
+}
+```

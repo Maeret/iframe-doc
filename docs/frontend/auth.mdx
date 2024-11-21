@@ -1,0 +1,32 @@
+---
+title: Authorization
+sidebar_position: 2
+hide_table_of_contents: false
+---
+
+
+import DiagAuth from '@site/src/components/_diagAuth.mdx';
+
+
+The user token needed to access the iframe's sections is generated
+**on your side**.
+
+Your service passes the user token in the iframe URL request.
+After that, the wallet provider's service calls
+[**GetUserData**](/backend/API#operation/GetUserData) with the received
+`token1`.
+
+The API expects a `200` response from your service with user data in the
+response body and no `errorCode`. This response verifies that the token exists
+and that a user account exists for it on your side. The iframe URL request is
+authorized.
+
+<DiagAuth/>
+
+:::info
+*   Partner Service — your service;
+*   IFRAME WEB — frontend iframe. Responsible for the iframe URL. The API is
+    described in [this section](/category/api-frontend);
+*   IFRAME Service — backend iframe. Responsible for sending requests to the
+    Partner Service. Described in section [API Backend](/category/api-backend).
+:::

@@ -1,0 +1,86 @@
+---
+title: Events MessageEvent
+sidebar_position: 3
+hide_table_of_contents: false
+---
+
+
+The iframe sends messages about user actions using the `postMessage()` method.
+
+:::info
+[Learn more about postMessage()](https://developer.mozilla.org/docs/Web/API/Window/postMessage).
+:::
+
+You can add an event handler in your application. For example, to receive user
+action statistics or redirect them to an app page:
+
+```js
+window.addEventListener('message', (message) => {
+  if (message.data.sender === 'b2b') {
+    if (message.data.event === 'registrationClick') {
+      console.log('Registration button clicked');
+    }
+  }
+});
+```
+
+
+## `appLoaded`
+
+App is ready:
+
+```js
+{
+  sender: 'b2b',
+  event: 'appLoaded',
+}
+```
+
+
+## `registrationClick`
+
+Click on the registration button:
+
+```js
+{
+  sender: 'b2b',
+  event: 'registrationClick',
+}
+```
+
+
+## `loginClick`
+
+Click on the login button:
+
+```js
+{
+  sender: 'b2b',
+  event: 'loginClick',
+}
+```
+
+
+## `rechargeClick`
+
+Click on the balance recharge button:
+
+```js
+{
+  sender: 'b2b',
+  event: 'rechargeClick',
+}
+```
+
+
+## `routeChanged`
+
+A route has changed:
+
+```js
+{
+  sender: 'b2b',
+  event: 'routeChanged',
+  path: '/en/line',       // new route in the iframe
+}
+```

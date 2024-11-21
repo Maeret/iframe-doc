@@ -1,0 +1,21 @@
+iframe {
+  margin: auto;
+  display: block;
+  border: 1px solid #0000005c;
+}
+
+footer {
+  display: none;
+}
+
+.sc-fUEImY {
+  display: none;
+}
+
+.redocusaurus .redoc-wrap {
+  border-bottom: none !important;
+}
+
+.redocusaurus .api-info {
+  display: none;
+}

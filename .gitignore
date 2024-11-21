@@ -1,0 +1,6 @@
+/.gitlab-ci.yml
+/.yalc
+/i18n
+.docusaurus
+node_modules
+/node_modules

@@ -1,0 +1,57 @@
+---
+title: FAQ
+sidebar_position: 5
+hide_table_of_contents: false
+---
+
+
+## iframe cookies security issue
+
+There is an issue with iframe cookie write access in some browsers (Safari,
+Firefox). It prohibits saving a cookie until the iframe domain is opened
+directly. In this instance, the browser successfully accepts cookies from the
+server, but does not save them or send them back to the server with the
+subsequent request.
+
+:::info
+[Read more](https://webkit.org/blog/8124/introducing-storage-access-api/).
+:::
+ 
+The iframe needs write access in to function properly. To fix this, iframe have
+a special mechanism: the first time a page with an iframe is opened, a special
+page will be displayed to the user with a warning about the need to use cookies
+and a button.
+
+When the button is clicked, a new iframe domain page is opened with a particular
+address for the test cookie to be recorded. New page is automatically closed and
+the iframe is relaunched. If successful, the iframe gains cookie storage access
+and redirects to the specified mechanism using the `gear` parameter, as
+described [here](/frontend/API).
+
+
+## Custom iframe menu
+
+If you want to use your section switching menu instead of the default one,
+please contact us. The standard menu can be disabled.
+
+
+## Open in new tag
+
+If the user clicks on links inside the iframe while holding down the Ctrl or Cmd
+key (or selects "Open Link in New Tab"), they will be redirected to the iframe
+parent domain.
+
+The address of the new page will contain the link (`path`) that the user needs
+to be redirected to:
+
+```
+https://{domain}/b2b-frame-goto?path={path}
+```
+
+*   `domain` — the parent domain for accessing the iframe
+*   `path` — the address of the page to be redirected, for example:
+    `https:%2F%example.com%2Fen%2Flive%2Ffootball`
+
+:::info
+The address of the parent domain is taken from `document.referrer`.
+:::

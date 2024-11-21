@@ -1,0 +1,202 @@
+---
+title: iframe URL
+sidebar_position: 1
+hide_table_of_contents: false
+---
+
+
+The URL to use inside the iframe element:
+
+```
+https://{domain}/{lng}/{path}?lng={lng}&token={token}&sign={sign}&cyber_type={cyber_type}
+```
+
+:::warning
+URI-encode values of path parameters.
+:::
+
+
+### `domain`
+
+*   required
+
+Your domain to access the iframe.
+
+:::info
+[iframe domain](#iframe-domain).
+:::
+
+
+### `path`
+
+Path to the site section that will be displayed in the iframe.
+
+path | section name
+--- | ---
+| live           | Live
+| line           | Sports 
+| office/history | payment History. See also [payment History API](/betHistory)
+| results        | Results
+
+
+### `lng`
+
+*   required for authorized requests
+
+ISO2 language code.
+
+`/{lng1}?lng={lng2}`
+
+To switch the language of the interface, use the path parameter `lng1`.
+The query parameter `lng2` doesn't affect the interface language.
+It's forwarded to the [Backend API](/en/category/api-backend).
+
+If you don't provide a language in `lng1`, the iframe will determine it from the
+browser settings and perform a redirect (code 302) to add the automatically
+determined `lng1` value to the path.
+
+
+### `token`
+
+*   required for authorized requests
+
+The token required to authorize the user.
+
+By default, some sections can be viewed by an unauthorized user — for this, it
+is enough not to send a `token` in the request.
+
+> `/office/history` is only to authorized users: only with a valid `token`.
+
+:::info
+[Authorization](/frontend/auth).
+:::
+
+
+### `sign`
+
+*   required for authorized requests
+
+Request signature.
+
+:::info
+[Signature Algorithm](#signature-algorithm).
+:::
+
+
+### `cyber_type`
+
+Esports display control key.
+
+:::info
+[Esports controls](/frontend/cyber).
+:::
+
+
+### `logout`
+
+Initiate user logout.
+
+`/{lng1}?logout=1`
+
+This command attempts to log out the user, by ending their current session.
+When used, the iframe transitions into a demo mode. The `token` query parameter
+is not relevant in this context and will be disregarded.
+
+
+### `platform_type`
+
+The type of platform. Possible values:
+*   `mobile` — to get the mobile version of the iframe
+*   `desktop` — to get the desktop version of the iframe
+*   not provided — the platform type will be determined automatically
+
+The provided value is stored in the `platform_type` cookie for up to 4 days.
+
+
+### `bgColor`
+
+Background color of a widget content. Any valid value of
+[`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color).
+
+---
+
+
+## iframe domain
+
+There are 2 placement options for accessing the iframe. In both cases, the 
+iframe is hosted on your domain.
+
+
+**Option 1. Hosting on your subdomain**
+
+:::note
+This hosting option will save you from problems with
+[recording cross-domain cookies in some browsers](/frontend/faq).
+However, it depends on your registrar — some registrars do not allow you to
+specify IP for subdomains.
+:::
+
+*   You have a registered domain.
+*   We provide you with an IP address.
+*   You register this IP on a subdomain of original domain.
+*   You buy and send us an SSL certificate for this subdomain.
+*   We add mirror domains on our side with provided certificate.
+*   You send us new SSL certificate when the old one runs out (paid — once a
+    year, free — once every 3 months).
+*   We notify you when you need to change the IP on subdomains (this does not
+    happen often).
+
+**Option 2. Hosting on your domain**
+
+*   You have a registered domain.
+*   We provide you with DNS NS records.
+*   You specify NS records for your domain, after that requests to the domain
+    are redirected to our IP address.
+
+---
+
+
+## Signature algorithm
+
+When authenticating a user with a token, you must include a signature in the
+request.
+
+The signature is formed as follows:
+
+```
+sign = md5(lng={lng}&token={token}{secret})
+```
+
+Where:
+*   `secret` — a secret string provided to you when connecting to the API
+*   `md5` — the function to compute the MD5 hash of a string
+
+:::caution
+The order of parameters when forming the signature string is strictly fixed.
+Please adhere to the specified order as shown above.
+:::
+
+When transforming parameter values, ensure compliance with
+[RFC 1738](https://datatracker.ietf.org/doc/html/rfc1738).
+
+```php title="Example"
+<?php
+/*
+
+*  domain:'https://iframe.com'
+*  token: '1q2w3e'
+*  lng: 'ru'
+*  secret: 'test_secret'
+
+*/
+
+
+$params = ['lng'=> 'en', 'token' => '1q2w3e'];
+$params['sign'] = md5(http_build_query($params).'test_secret');
+
+// $src = 'https://iframe.com/en?lng=en&token=1q2w3e&sign=3ec84273bf0043d4936a8486b8741bb7'
+$src = 'https://iframe.com/en'?.http_build_query($params);
+?>
+
+<iframe src="<?= $src; ?>"></iframe>
+```

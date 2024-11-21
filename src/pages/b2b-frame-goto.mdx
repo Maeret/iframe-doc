@@ -1,0 +1,40 @@
+---
+title: Redirecting...
+description: Redirecting...
+hide_table_of_contents: true
+---
+
+
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+
+
+export function Text() {
+  if (ExecutionEnvironment.canUseDOM) {
+    if (localStorage.getItem('lng') == 'en') {
+      return (
+        <h1 class="hero__title">
+          Redirecting...
+        </h1>
+      );
+    } else {
+      return (
+        <h1 class="hero__title">
+          ...
+        </h1>
+      );
+    }
+  }
+}
+
+<div
+  id="__docusaurus_skipToContent_fallback"
+  class="main-wrapper mainWrapper_node_modules-@docusaurus-theme-classic-lib-theme-Layout-styles-module"
+>
+  <main class="container margin-vert--xl">
+    <div class="row">
+       <div class="col col--6 col--offset-3">
+        <Text/>
+      </div>
+    </div>
+  </main>
+</div>

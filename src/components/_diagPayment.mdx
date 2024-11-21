@@ -1,0 +1,29 @@
+```mermaid
+stateDiagram-v2
+  state Calculation {
+    [*] --> refund
+    [*] --> win
+    [*] --> loss
+  }
+
+
+  [*] --> payment
+
+  payment --> Calculation
+  payment --> sale
+  payment --> deleted
+
+  sale --> [*]
+
+  deleted --> [*]
+
+  refund --> win: recalculation
+  refund --> [*]
+
+  loss --> win: recalculation
+  loss --> [*]
+
+  win --> refund: recalculation
+  win --> loss: recalculation
+  win --> [*]
+```

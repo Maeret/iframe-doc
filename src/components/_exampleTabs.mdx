@@ -1,0 +1,48 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Example from '@site/src/components/_example.mdx';
+import { useColorMode } from '@docusaurus/theme-common';
+
+
+<Tabs>
+  <TabItem
+    value='desktop'
+    label='Desktop'
+    default
+  >
+    <Example
+      type='desktop'
+      lng={props.lng}
+      ver={props.ver}
+      desc={props.children}
+      width={props.desktop_width}
+      height={props.desktop_height}
+      src={props.src}
+      bgColor={
+        useColorMode().colorMode === 'dark'
+        ? '%231b1b1d'
+        : '%2380808020'
+      }
+    />
+  </TabItem>
+
+  <TabItem
+    value='mobile'
+    label='Mobile'
+  >
+    <Example
+      type='mobile'
+      lng={props.lng}
+      ver={props.ver}
+      desc={props.children}
+      width={props.mobile_width}
+      height={props.mobile_height}
+      src={props.src}
+      bgColor={
+        useColorMode().colorMode === 'dark'
+        ? '%231b1b1d'
+        : '%2380808020'
+      }
+    />
+  </TabItem>
+</Tabs>
