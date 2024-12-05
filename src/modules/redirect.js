@@ -5,7 +5,7 @@ export function onRouteUpdate({location, previousLocation}) {
   ) {
     if (localStorage.getItem('lng') == 'en') {
       window.location.assign(
-        '/en/frontend/newTab'
+        '/frontend/newTab'
       );
     } else {
       window.location.assign(
@@ -34,8 +34,8 @@ export function onRouteUpdate({location, previousLocation}) {
   }
   else if (
     location.pathname !== previousLocation?.pathname
-    && location.pathname == '/en/api'
+    && location.pathname == '/api'
   ) {
-    window.location.href = '../en/api-en';
+    window.location.href = '../api-en';
   }
 }

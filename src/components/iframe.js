@@ -26,7 +26,7 @@ export default function Iframe(env, props) {
       : props.ver
         ? props.lng
           ? 'https://xmaxiframe.top/iframe/main?gear=1&method_id=2&lng=en&cyber_type=2&sign=6c2d90baab2429d2348a9cb63e74e4b1'
-          : 'https://docs-iframe-demo.uplatform.com/en/iframe/main?gear=1&sign=484fdc158f359ba14afabf22ce88b64b&method_id=1&lng=en&cyber_type=2&game=-1'
+          : 'https://docs-iframe-demo.uplatform.com/iframe/main?gear=1&sign=484fdc158f359ba14afabf22ce88b64b&method_id=1&lng=en&cyber_type=2&game=-1'
         : `https://xframe-docs-demo.payment-b2b.com${props.lng ? ('/' + props.lng) : ''}?platform_type=${props.type}`;
   const id =
     props.id
