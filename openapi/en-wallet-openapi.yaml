@@ -166,10 +166,10 @@ webhooks:
               properties:
                 token1:
                   type: "string"
-                  description: "User token received in iframe URL\n> [More about authorization in iframe](/en/get-started/frontend/auth)\n"
+                  description: "User token received in iframe URL\n> [More about authorization in iframe](/get-started/frontend/auth)\n"
                 sign:
                   type: "string"
-                  description: "Request signature performed by the IFRAME Service\n> [Read more about request signing](/en/get-started/backend/sign)\n"
+                  description: "Request signature performed by the IFRAME Service\n> [Read more about request signing](/get-started/backend/sign)\n"
                   example: "IznVfVDbrKDoGJZus8qplQ=="
                 time:
                   type: integer
@@ -227,13 +227,13 @@ webhooks:
                       - 4
                     description: "Error code: \n * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.\n* `1` - invalid `token1` received;\n* `4` - invalid signature `sign`.\n"
 
-                  minbet:
+                  min:
                     type: "number"
                     format: "decimal"
                     description: "Minimum bid per user\n> The ability to limit the minimum and maximum bid can be enabled upon request. Please contact us.\n"
                     example: 0.2
 
-                  maxbet:
+                  max:
                     type: "number"
                     format: "decimal"
                     description: "Maximum bid per user\n> The ability to limit the minimum and maximum bid can be enabled upon request. Please contact us.\n"
@@ -241,7 +241,7 @@ webhooks:
 
                   minMaxCurrency:
                     type: "string"
-                    description: "Currency `minbet` and `maxbet` in ISO 4217\n> The ability to limit the minimum and maximum payment can be enabled upon request. Please contact us.\n"
+                    description: "Currency `min` and `max` in ISO 4217\n> The ability to limit the minimum and maximum payment can be enabled upon request. Please contact us.\n"
                     example: "USD"
                     nullable: true
                   tel:
@@ -287,7 +287,7 @@ components:
           description: |
             Request signature produced by your service.
 
-            See [Request signature](/en/get-started/backend/sign).
+            See [Request signature](/get-started/backend/sign).
         token1:
           type: string
           nullable: true
@@ -353,7 +353,7 @@ components:
           description: |
             Request signature produced by your service.
 
-            See [Request signature](/en/get-started/backend/sign).
+            See [Request signature](/get-started/backend/sign).
         token1:
           type: string
           nullable: true
@@ -400,8 +400,8 @@ components:
         "dopInfo": "string",
         "success": true,
         "description": "string",
-        "minbet": 0.2,
-        "maxbet": 1000,
+        "min": 0.2,
+        "max": 1000,
         "minMaxCurrency": "USD",
         "tel": "965065787",
         "email": "example@nomail.com",

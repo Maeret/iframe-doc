@@ -170,14 +170,14 @@ webhooks:
                     User token received in iframe URL
 
                     > [More about authorization in
-                    iframe](/en/get-started/frontend/auth)
+                    iframe](/get-started/frontend/auth)
                 sign:
                   type: string
                   description: >
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/en/get-started/backend/sign)
+                    signing](/get-started/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
                 time:
                   type: integer
@@ -247,7 +247,7 @@ webhooks:
                        * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.
                       * `1` - invalid `token1` received;
                       * `4` - invalid signature `sign`.
-                  minbet:
+                  min:
                     type: number
                     format: decimal
                     description: >
@@ -256,7 +256,7 @@ webhooks:
                       > The ability to limit the minimum and maximum bid can be
                       enabled upon request. Please contact us.
                     example: 0.2
-                  maxbet:
+                  max:
                     type: number
                     format: decimal
                     description: >
@@ -268,7 +268,7 @@ webhooks:
                   minMaxCurrency:
                     type: string
                     description: >
-                      Currency `minbet` and `maxbet` in ISO 4217
+                      Currency `min` and `max` in ISO 4217
 
                       > The ability to limit the minimum and maximum payment can
                       be enabled upon request. Please contact us.
@@ -312,8 +312,8 @@ webhooks:
                 dopInfo: string
                 success: true
                 description: string
-                minbet: 0.2
-                maxbet: 1000
+                min: 0.2
+                max: 1000
                 minMaxCurrency: USD
                 tel: '965065787'
                 email: example@nomail.com
@@ -336,7 +336,7 @@ components:
           description: |
             Request signature produced by your service.
 
-            See [Request signature](/en/get-started/backend/sign).
+            See [Request signature](/get-started/backend/sign).
         token1:
           type: string
           nullable: true
@@ -404,7 +404,7 @@ components:
           description: |
             Request signature produced by your service.
 
-            See [Request signature](/en/get-started/backend/sign).
+            See [Request signature](/get-started/backend/sign).
         token1:
           type: string
           nullable: true
@@ -453,8 +453,8 @@ components:
       dopInfo: string
       success: true
       description: string
-      minbet: 0.2
-      maxbet: 1000
+      min: 0.2
+      max: 1000
       minMaxCurrency: USD
       tel: '965065787'
       email: example@nomail.com

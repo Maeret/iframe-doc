@@ -68,7 +68,7 @@ webhooks:
                        * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.
                       * `1` - invalid 'token1' received;
                       * `4` - invalid signature `sign`.
-                  minbet:
+                  min:
                     type: number
                     format: decimal
                     description: >
@@ -77,7 +77,7 @@ webhooks:
                       > The ability to limit the minimum and maximum bid can be
                       enabled upon request. Please contact us.
                     example: 0.2
-                  maxbet:
+                  max:
                     type: number
                     format: decimal
                     description: >
@@ -89,7 +89,7 @@ webhooks:
                   minMaxCurrency:
                     type: string
                     description: >
-                      Currency `minbet` and `maxbet` in ISO 4217
+                      Currency `min` and `max` in ISO 4217
 
                       > The ability to limit the minimum and maximum payment can
                       be enabled upon request. Please contact us.
@@ -133,8 +133,8 @@ webhooks:
                 dopInfo: string
                 success: true
                 description: string
-                minbet: 0.2
-                maxbet: 1000
+                min: 0.2
+                max: 1000
                 minMaxCurrency: USD
                 tel: '965065787'
                 email: example@nomail.com
@@ -155,14 +155,14 @@ webhooks:
                     User token received in iframe URL
 
                     > [More about authorization in
-                    iframe](/en/get-started/frontend/auth)
+                    iframe](/get-started/frontend/auth)
                 sign:
                   type: string
                   description: >
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/en/get-started/backend/sign)
+                    signing](/get-started/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
                 time:
                   type: integer
@@ -206,19 +206,19 @@ webhooks:
                       Error code: 
                        * `0` - no error. Send `errorCode: 0` or do not send the `errorCode` field if the request is correctly processed by your service. Do not send `errorCode: null`.
                       * `1` - invalid `token1` or `token2` received;
-                      * `2` - `betId` has already been processed;
+                      * `2` - `Id` has already been processed;
                       * `3` - insufficient account balance;
                       * `4` - invalid signature `sign`;
                        * `6` - limit on the amount of a single payment;
-                      > See [payment Limits](/en/get-started/backend/limits)
+                      > See [payment Limits](/get-started/backend/limits)
                       * `7` - daily limit on the total amount of payment;
-                      > See [payment Limits](/en/get-started/backend/limits)
+                      > See [payment Limits](/get-started/backend/limits)
                       * `8` - debt limit;
-                      > See [payment Limits](/en/get-started/backend/limits) 
+                      > See [payment Limits](/get-started/backend/limits) 
                       * `9` - self-imposed limit;
-                      > See [payment Limits](/en/get-started/backend/limits)
+                      > See [payment Limits](/get-started/backend/limits)
                       * `10` - user profile is not verified.
-                      > See [payment Limits](/en/get-started/backend/limits)
+                      > See [payment Limits](/get-started/backend/limits)
                     enum:
                       - 0
                       - 1
@@ -246,7 +246,7 @@ webhooks:
                     - refund
                     - sale
                     - deleted
-                betId:
+                Id:
                   type: number
                   format: ulong
                   description: payment ID in wallet provider system
@@ -256,15 +256,15 @@ webhooks:
                   description: >-
                     Token received by the IFRAME Service in response to the
                     request
-                    [/GetUserData](/en/get-started/backend/API#operation/GetUserData)
+                    [/GetUserData](/get-started/backend/API#operation/GetUserData)
                   example: E7587B42-9E13-4FA8-BD0A-38247829A564
-                betInfo:
+                paymentInfo:
                   type: string
                   nullable: true
                   description: >
                     payment info. The default language is English.
 
-                    > The language of `betInfo` can be changed upon request.
+                    > The language of `paymentInfo` can be changed upon request.
                     Please contact us.
                   example: >-
                     [{"Coef":2.3,"CouponType":"Single","DateStart":1538609400,"Event":"W1","GameName":"NHL.  
@@ -290,7 +290,7 @@ webhooks:
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/en/get-started/backend/sign)
+                    signing](/get-started/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
   /GetBalance:
     post:
@@ -348,7 +348,7 @@ webhooks:
                   description: >-
                     Token received by the IFRAME Service in response to the
                     request
-                    [/GetUserData](/en/get-started/backend/API#operation/GetUserData)
+                    [/GetUserData](/get-started/backend/API#operation/GetUserData)
                   example: E7587B42-9E13-4FA8-BD0A-38247829A564
                 sign:
                   type: string
@@ -356,7 +356,7 @@ webhooks:
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/en/get-started/backend/sign)
+                    signing](/get-started/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
                 time:
                   type: integer
@@ -385,8 +385,8 @@ components:
       dopInfo: string
       success: true
       description: string
-      minbet: 0.2
-      maxbet: 1000
+      min: 0.2
+      max: 1000
       minMaxCurrency: USD
       tel: '965065787'
       email: example@nomail.com
