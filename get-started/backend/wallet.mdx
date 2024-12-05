@@ -20,9 +20,9 @@ with a token unique for the user and a wallet.
   </summary>
   You need to:
   1.  (optionally) Generate unique `token1` and `sign` (see
-      [Request signature](/get-started/backend/sign)).
-  1.  Call [/GetBalance](/get-started/wallet/#operation/getBalance) method.
-  1.  IFRAME Service will send a [/GetUserData](/get-started/wallet/#operation/getUserData)
+      [Request signature](/iframe-doc/backend/sign)).
+  1.  Call [/GetBalance](#operation/getBalance) method.
+  1.  IFRAME Service will send a [/GetUserData](#operation/getUserData)
       request to your host address.
 
       Your service should validate the token and signature and return data,
@@ -69,8 +69,8 @@ with a token unique for the user and a wallet.
   </summary>
   You need to:
   1.  (optionally) Generate unique `token1` and `sign` (see
-      [Request signature](/get-started/backend/sign)).
-  1.  Call [/TransferFunds](/get-started/wallet/#operation/transferFunds) method with operation
+      [Request signature](/iframe-doc/backend/sign)).
+  1.  Call [/TransferFunds](#operation/transferFunds) method with operation
       parameters including `transferId`.
 
       :::info
@@ -83,7 +83,7 @@ with a token unique for the user and a wallet.
       cannot be used for different `userId`.
       :::
 
-  1.  IFRAME Service will send a [/GetUserData](/get-started/wallet/#operation/getUserData)
+  1.  IFRAME Service will send a [/GetUserData](#operation/getUserData)
       request to your host address.
 
       Your service should validate the token and signature and return data,
