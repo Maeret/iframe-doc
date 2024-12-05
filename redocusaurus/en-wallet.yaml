@@ -170,14 +170,14 @@ webhooks:
                     User token received in iframe URL
 
                     > [More about authorization in
-                    iframe](/get-started/frontend/auth)
+                    iframe](/iframe-doc/frontend/auth)
                 sign:
                   type: string
                   description: >
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/get-started/backend/sign)
+                    signing](/iframe-doc/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
                 time:
                   type: integer
@@ -336,7 +336,7 @@ components:
           description: |
             Request signature produced by your service.
 
-            See [Request signature](/get-started/backend/sign).
+            See [Request signature](/iframe-doc/backend/sign).
         token1:
           type: string
           nullable: true
@@ -404,7 +404,7 @@ components:
           description: |
             Request signature produced by your service.
 
-            See [Request signature](/get-started/backend/sign).
+            See [Request signature](/iframe-doc/backend/sign).
         token1:
           type: string
           nullable: true

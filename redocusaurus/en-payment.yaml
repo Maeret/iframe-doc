@@ -155,14 +155,14 @@ webhooks:
                     User token received in iframe URL
 
                     > [More about authorization in
-                    iframe](/get-started/frontend/auth)
+                    iframe](/iframe-doc/frontend/auth)
                 sign:
                   type: string
                   description: >
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/get-started/backend/sign)
+                    signing](/iframe-doc/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
                 time:
                   type: integer
@@ -210,15 +210,15 @@ webhooks:
                       * `3` - insufficient account balance;
                       * `4` - invalid signature `sign`;
                        * `6` - limit on the amount of a single payment;
-                      > See [payment Limits](/get-started/backend/limits)
+                      > See [payment Limits](/iframe-doc/backend/limits)
                       * `7` - daily limit on the total amount of payment;
-                      > See [payment Limits](/get-started/backend/limits)
+                      > See [payment Limits](/iframe-doc/backend/limits)
                       * `8` - debt limit;
-                      > See [payment Limits](/get-started/backend/limits) 
+                      > See [payment Limits](/iframe-doc/backend/limits) 
                       * `9` - self-imposed limit;
-                      > See [payment Limits](/get-started/backend/limits)
+                      > See [payment Limits](/iframe-doc/backend/limits)
                       * `10` - user profile is not verified.
-                      > See [payment Limits](/get-started/backend/limits)
+                      > See [payment Limits](/iframe-doc/backend/limits)
                     enum:
                       - 0
                       - 1
@@ -256,7 +256,7 @@ webhooks:
                   description: >-
                     Token received by the IFRAME Service in response to the
                     request
-                    [/GetUserData](/get-started/backend/API#operation/GetUserData)
+                    [/GetUserData](/iframe-doc/backend/API#operation/GetUserData)
                   example: E7587B42-9E13-4FA8-BD0A-38247829A564
                 paymentInfo:
                   type: string
@@ -290,7 +290,7 @@ webhooks:
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/get-started/backend/sign)
+                    signing](/iframe-doc/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
   /GetBalance:
     post:
@@ -348,7 +348,7 @@ webhooks:
                   description: >-
                     Token received by the IFRAME Service in response to the
                     request
-                    [/GetUserData](/get-started/backend/API#operation/GetUserData)
+                    [/GetUserData](/iframe-doc/backend/API#operation/GetUserData)
                   example: E7587B42-9E13-4FA8-BD0A-38247829A564
                 sign:
                   type: string
@@ -356,7 +356,7 @@ webhooks:
                     Request signature performed by the IFRAME Service
 
                     > [Read more about request
-                    signing](/get-started/backend/sign)
+                    signing](/iframe-doc/backend/sign)
                   example: IznVfVDbrKDoGJZus8qplQ==
                 time:
                   type: integer
